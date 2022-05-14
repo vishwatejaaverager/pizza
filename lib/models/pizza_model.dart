@@ -4,13 +4,15 @@ class PizzaModel {
   String? description;
   int? defaultCrust;
   List<Crusts>? crusts;
+  List<Sizes>? sizes;
 
   PizzaModel(
       {this.name,
       this.isVeg,
       this.description,
       this.defaultCrust,
-      this.crusts});
+      this.crusts,
+      this.sizes});
 
   PizzaModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -23,6 +25,12 @@ class PizzaModel {
         crusts!.add(new Crusts.fromJson(v));
       });
     }
+     if (json['sizes'] != null) {
+      sizes = <Sizes>[];
+      json['sizes'].forEach((v) {
+        sizes!.add(new Sizes.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -33,6 +41,9 @@ class PizzaModel {
     data['defaultCrust'] = this.defaultCrust;
     if (this.crusts != null) {
       data['crusts'] = this.crusts!.map((v) => v.toJson()).toList();
+    }
+     if (this.sizes != null) {
+      data['sizes'] = this.sizes!.map((v) => v.toJson()).toList();
     }
     return data;
   }

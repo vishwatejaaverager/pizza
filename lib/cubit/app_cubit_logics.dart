@@ -47,7 +47,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
         if (state is LoadedState) {
           return PizzaHome();
         } else {
-          return Center(child: Text("fuck"));
+          return Center(child: Text("gone"));
         }
       },
     ));
